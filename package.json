@@ -1,0 +1,20 @@
+{
+  "name": "@fengqiaogang/safe-get",
+  "version": "0.1.0",
+  "description": "safeGet",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svonme/safeGet.git"
+  },
+  "keywords": ["safe-get"],
+  "author": "svon.me@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svonme/safeGet/issues"
+  },
+  "homepage": "https://github.com/svonme/safeGet#readme"
+}
