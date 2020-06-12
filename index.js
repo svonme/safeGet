@@ -3,28 +3,33 @@
  * @author svon.me@gmail.com
  */
 
+function getLayer(path) {
+  var layer = path.split('.');
+  var array = [];
+  for(var i = 0, len = layer.length; i < len; i++) {
+    if (layer[i]) {
+      array.push(layer[i]);
+    }
+  }
+  return array;
+}
+
+function getArrayLayer(path) {
+  var string = path.replace(/\[/g, '.');
+  var text = string.replace(/\]/g, '');
+  return getLayer(text);
+}
 
 function safeGet(instance, path) {
   if (instance && path) {
-    var layer = path.split('.');
+    var layer = getArrayLayer(path);
     var app = function(data, index) {
       var key = layer[index];
-      var safeMake = function(result, name, i) {
-        // 数组操作
-        if (/[\w]+]$/.test(name)) {
-          var indexOf = key.indexOf('[');
-          var k = name.slice(0, indexOf);
-          var subscript = key.slice(indexOf + 1, key.lastIndexOf(']'));
-          return safeMake(result[k], subscript, i);
-        }
-        // 如果有下一层
-        if (layer[i + 1]) {
-          return result[name] ? app(result[name], i + 1) : void 0;
-        } else {
-          return result[name];
-        }
-      };
-      return safeMake(data, key, index);
+      // 如果有下一层
+      if (layer[index + 1]) {
+        return data[key] ? app(data[key], index + 1) : void 0;
+      }
+      return data[key];
     };
     return app(instance, 0);
   }
