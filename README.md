@@ -2,7 +2,7 @@
 
 一个很容易从对象中安全获取对象的工具
 
-`$ npm install @fengqiaogang/safe-get`
+`$ npm install @fengqiaogang/safe-get@latest`
 
 ```
 
